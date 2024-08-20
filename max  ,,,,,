@@ -1,0 +1,41 @@
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Size of an array :");
+         int n=scan.nextInt();
+        int arr[] = new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=scan.nextInt();
+        }
+        for(int i=0;i<n;i++){
+              System.out.print(arr[i]+",");
+        }
+          System.out.println();
+         
+            System.out.println(maxSum(arr));
+      
+    }
+    public static int maxSum(int[] nums) {
+        int min=Integer.MIN_VALUE;
+        int max=-1;
+        for(int i=0;i<nums.length-1;i++){
+            for(int j=i+1;j<nums.length;j++){
+                 if(maxDigit(nums[i])==maxDigit(nums[j])){
+                    max=Math.max(max,nums[i]+nums[j]);
+                 }
+            }
+        }
+        return max;
+    }
+    public static int maxDigit(int nums){
+        int res=0;
+        while(nums!=0){
+            int digit=nums%10;
+            res=Math.max(res,digit);
+            nums=nums/10;
+        }
+        return res;
+    }
+}
+
